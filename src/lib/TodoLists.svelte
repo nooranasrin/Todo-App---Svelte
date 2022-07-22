@@ -1,19 +1,14 @@
 <script>
-let value = "";
+import InputField from './InputField.svelte';
 let todos = [];
 
-const addTodoItem = () => {
-    todos = [...todos, value];
-    value = "";
+const addTodoItem = (value) => {
+  todos = [...todos, value];
 }
 </script>
 
 <h1>Todo Lists</h1>
-
-<form on:submit|preventDefault={addTodoItem}>
-    <input type="text" bind:value={value}/>
-</form>
-
+<InputField onSubmitHandler={addTodoItem}/>
 <ul>
     {#each todos as todo}
     <li>{todo}</li>
